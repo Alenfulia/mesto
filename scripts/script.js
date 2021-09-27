@@ -1,7 +1,7 @@
 // Находим форму в DOM
 let popup = document.querySelector('.popup'); // Воспользуйтесь методом querySelector()
-let popupOpen = document.querySelector('.profile__edit-button')
-let popupClose = popup.querySelector('.popup__submit-close')
+let popupOpenBtn = document.querySelector('.profile__edit-button')
+let popupCloseBtn = popup.querySelector('.popup__submit-close')
 let formElement = document.querySelector('.popup__form')
 
 let profileName = document.querySelector('.profile__name'); // Воспользуйтесь инструментом .querySelector()
@@ -18,6 +18,10 @@ function popupToggle() {
     jobInput.value = profileJob.textContent;
   }
 }
+// Закрытие формы
+function popupClose() {
+  popup.classList.remove('popup_opened')
+}
 // Обработчик «отправки» формы,хотя пока она никуда отправляться не будет
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -31,6 +35,6 @@ function formSubmitHandler (evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-popupOpen.addEventListener('click', popupToggle);
-popupClose.addEventListener('click', popupToggle);
+popupOpenBtn.addEventListener('click', popupToggle);
+popupCloseBtn.addEventListener('click', popupClose);
 formElement.addEventListener('submit', formSubmitHandler);
