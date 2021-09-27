@@ -1,0 +1,5 @@
+.elements {
+  grid-area: elements;
+  max-width: 880px;
+  margin: 0 auto 66px;
+}
