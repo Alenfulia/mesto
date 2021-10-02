@@ -15,13 +15,13 @@
   outline: none;
 }
 
-@media screen and (max-width: 457px) {
+@media screen and (max-width: 768px) {
   .popup__input {
     width: 275px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .popup__input {
     width: 238px;
   }

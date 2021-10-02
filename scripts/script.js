@@ -13,15 +13,15 @@ let jobInput = document.querySelector('.popup__input_text_info');
 //Открытие формы
 function popupToggle() {
   popup.classList.toggle('popup_opened')
-  if (popup.classList.contains('popup_opened')) {
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-  }
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
+
 // Закрытие формы
 function popupClose() {
   popup.classList.remove('popup_opened')
 }
+
 // Обработчик «отправки» формы,хотя пока она никуда отправляться не будет
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -30,7 +30,7 @@ function formSubmitHandler (evt) {
 
   profileName.textContent = nameValue;
   profileJob.textContent = jobValue; // Вставьте новые значения с помощью textContent
-  popupToggle()
+  popupClose()
 }
 
 // Прикрепляем обработчик к форме:

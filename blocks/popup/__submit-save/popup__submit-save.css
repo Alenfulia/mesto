@@ -20,9 +20,9 @@
   opacity: .8;
 }
 
-@media screen and (max-width: 457px) {
+@media screen and (max-width: 768px) {
   .popup__submit-save {
-    width: 275px;
+    width: 238px;
     margin-bottom: 11px;
     font-size: 16px;
     line-height: 19px;
@@ -31,10 +31,8 @@
 
 @media screen and (max-width: 320px) {
   .popup__submit-save {
-    width: 238px;
     margin-bottom: 10px;
     font-size: 14px;
     line-height: 17px;
-
   }
 }
