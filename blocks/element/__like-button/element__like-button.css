@@ -15,10 +15,3 @@
 .element__like-button:hover {
   opacity: .5;
 }
-
-.element__like-button:active {
-  background: transparent;
-  background-image: url('../../../images/heart-element_active.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
