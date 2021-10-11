@@ -19,7 +19,7 @@ const cardInfoInput = popupAddCard.querySelector('.popup__input_text_card-link')
 const popupOpenBtnAdd = document.querySelector('.profile__add-button');
 
 const cardsList = document.querySelector('.elements__list');
-const popupImage = document.querySelector('.popup__show-image');
+const popupImage = document.querySelector('.popup_show-image');
 const popupImageCloseBtn = popupImage.querySelector('.popup__submit-close');
 
 //Открытие формы
