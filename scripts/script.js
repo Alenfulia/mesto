@@ -24,7 +24,7 @@ const popupImageCloseBtn = popupImage.querySelector('.popup__submit-close');
 
 //Открытие формы
 function popupOpen(popup) {
-  popup.classList.toggle('popup_opened');
+  popup.classList.add('popup_opened');
 }
 
 //Первоначальные значения полей ввода формы редактирования
@@ -130,9 +130,8 @@ function formAddCardSubmit(evt) {
     link: cardInfoInput.value
   });
   cardsList.prepend(newItem);
-  cardNameInput.value = '';
-  cardInfoInput.value = '';
   popupClose(popupAddCard);
+  cardForm.reset();
 }
 
 cardForm.addEventListener('submit', formAddCardSubmit);
