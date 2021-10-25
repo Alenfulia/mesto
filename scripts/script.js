@@ -25,6 +25,8 @@ const popupImageCloseBtn = popupImage.querySelector('.popup__submit-close');
 //Открытие формы
 function popupOpen(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', popupEscHandler);
+  document.addEventListener('click', popupOverlayHandler);
 }
 
 //Первоначальные значения полей ввода формы редактирования
@@ -35,8 +37,25 @@ function popupInputEdit() {
 
 // Закрытие формы
 function popupClose(popup) {
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', popupEscHandler);
+  document.addEventListener('click', popupOverlayHandler);
 }
+
+//Закрытие формы при нажатии esc
+const popupEscHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    popupClose(openedPopup);
+  }
+}
+
+//Закрытие формы при нажатии на overlay
+const popupOverlayHandler = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    popupClose(evt.target);
+  }
+};
 
 // Обработчик «отправки» формы
 function formSubmitHandler (evt) {
@@ -51,6 +70,7 @@ function formSubmitHandler (evt) {
 popupOpenBtnEdit.addEventListener('click', () => popupOpen(popupEditProfile), popupInputEdit());
 popupCloseBtnEdit.addEventListener('click', () => popupClose(popupEditProfile));
 profileForm.addEventListener('submit', formSubmitHandler);
+popupCloseBtnEdit.addEventListener('keydown', () => popupEscHandler(popupEditProfile));
 
 popupOpenBtnAdd.addEventListener('click', () => popupOpen(popupAddCard));
 popupCloseBtnAdd.addEventListener('click', () => popupClose(popupAddCard));
