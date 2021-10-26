@@ -17,6 +17,7 @@ const cardForm = popupAddCard.querySelector('.popup__add-card-form')
 const cardNameInput = popupAddCard.querySelector('.popup__input_text_card-name');
 const cardInfoInput = popupAddCard.querySelector('.popup__input_text_card-link');
 const popupOpenBtnAdd = document.querySelector('.profile__add-button');
+const popupBtnDisabled = popupAddCard.querySelector('.popup__submit-save');
 
 const cardsList = document.querySelector('.elements__list');
 const popupImage = document.querySelector('.popup_show-image');
@@ -38,8 +39,8 @@ function popupInputEdit() {
 // Закрытие формы
 function popupClose(popup) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', popupEscHandler);
-  document.addEventListener('click', popupOverlayHandler);
+  document.removeEventListener('keydown', popupEscHandler);
+  document.removeEventListener('click', popupOverlayHandler);
 }
 
 //Закрытие формы при нажатии esc
@@ -58,7 +59,7 @@ const popupOverlayHandler = (evt) => {
 };
 
 // Обработчик «отправки» формы
-function formSubmitHandler (evt) {
+function formSubmitHandlerProfile (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
   profileName.textContent  = nameInput.value;
   profileInfo.textContent  = infoInput.value;
@@ -67,14 +68,14 @@ function formSubmitHandler (evt) {
 }
 
 // Прикрепляем обработчик к форме
-popupOpenBtnEdit.addEventListener('click', () => popupOpen(popupEditProfile), popupInputEdit());
+popupOpenBtnEdit.addEventListener('click', () => {
+  popupInputEdit(); popupOpen(popupEditProfile);
+})
 popupCloseBtnEdit.addEventListener('click', () => popupClose(popupEditProfile));
-profileForm.addEventListener('submit', formSubmitHandler);
-popupCloseBtnEdit.addEventListener('keydown', () => popupEscHandler(popupEditProfile));
+profileForm.addEventListener('submit', formSubmitHandlerProfile);
 
 popupOpenBtnAdd.addEventListener('click', () => popupOpen(popupAddCard));
 popupCloseBtnAdd.addEventListener('click', () => popupClose(popupAddCard));
-profileForm.addEventListener('submit', formSubmitHandler);
 
 popupImageCloseBtn.addEventListener('click', () => popupClose(popupImage));
 
@@ -126,21 +127,21 @@ cardElement.querySelector('.element__like-button').addEventListener('click', fun
 
 //Открытие изображения
 cardElement.querySelector('.element__image').addEventListener('click', function(evt) {
-  popupOpen(popupImage);
   popupImage.querySelector('.popup__image').src = evt.target.src;
   popupImage.querySelector('.popup__image').alt = item.name;
   popupImage.querySelector('.popup__image-title').textContent = item.name;
+  popupOpen(popupImage);
 });
   return cardElement;
 }
 
 //Добавление массива карточек
-function addCard(card) {
-  const listedCard = card.map(createCard);
+function addCards(cards) {
+  const listedCard = cards.map(createCard);
   cardsList.prepend(...listedCard);
 }
 
-addCard(initialCards);
+addCards(initialCards);
 
 //Добавление новой карточки
 function formAddCardSubmit(evt) {
@@ -152,6 +153,7 @@ function formAddCardSubmit(evt) {
   cardsList.prepend(newItem);
   popupClose(popupAddCard);
   cardForm.reset();
+  popupBtnDisabled.disabled = true;
 }
 
 cardForm.addEventListener('submit', formAddCardSubmit);

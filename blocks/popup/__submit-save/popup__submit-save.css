@@ -20,6 +20,14 @@
   opacity: .8;
 }
 
+.popup__submit-save:disabled {
+  border: 1px solid rgba(0, 0, 0, .2);
+  background: #fff;
+  border-radius: 2px;
+  color:rgba(0, 0, 0, .2);
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 768px) {
   .popup__submit-save {
     width: 238px;
