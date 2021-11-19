@@ -1,5 +1,6 @@
 import { Card } from "./card.js";
 import { FormValidator } from "./formValidator.js";
+import { initialCards } from "./utils.js";
 
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -25,40 +26,12 @@ const popupImage = document.querySelector('.popup_show-image');
 const popupImageCloseBtn = popupImage.querySelector('.popup__submit-close');
 
 
-//Массив карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-
 //Открытие формы
 const popupOpen = (popup) => {
   popup.classList.add('popup_opened');
+  popup.reset();
   document.addEventListener('keydown', popupEscHandler);
-  document.addEventListener('click', popupOverlayHandler);
+  document.addEventListener('mousedown', popupOverlayHandler);
 }
 
 //Добавление массива карточек

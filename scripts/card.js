@@ -1,7 +1,5 @@
 
-const popupImage = document.querySelector('.popup_show-image');
-const popupImageSrc = popupImage.querySelector('.popup__image');
-const popupImageText = popupImage.querySelector('.popup__image-title');
+import {popupImage, popupImageSrc, popupImageText} from "./utils.js";
 
 export class Card {
   constructor(data, selector) {
@@ -28,8 +26,8 @@ export class Card {
   }
 
   //Удаление карточки
-  _handlerDelCard(evt) {
-    this.closest('.element').remove();
+  _handlerDelCard() {
+    this._element.remove();
   }
 
   //Открытие изображения
@@ -43,7 +41,7 @@ export class Card {
   //Слушатель событий
   _setEventListeners() {
     this._element.querySelector('.element__like-button').addEventListener('click', this._handlerLikeCard);
-    this._element.querySelector('.element__button-delete').addEventListener('click', this._handlerDelCard);
+    this._element.querySelector('.element__button-delete').addEventListener('click', this._handlerDelCard.bind(this));
     this._element.querySelector('.element__image').addEventListener('click', (evt) => this._handlerOpenImgCard(evt));
   }
 
@@ -52,8 +50,9 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__image').alt = this._name;
+    const imgPlace = this._element.querySelector('.element__image');
+    imgPlace.src = this._link;
+    imgPlace.alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
 
     this._setEventListeners();
