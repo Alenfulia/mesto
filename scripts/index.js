@@ -29,7 +29,6 @@ const popupImageCloseBtn = popupImage.querySelector('.popup__submit-close');
 //Открытие формы
 const popupOpen = (popup) => {
   popup.classList.add('popup_opened');
-  popup.reset();
   document.addEventListener('keydown', popupEscHandler);
   document.addEventListener('mousedown', popupOverlayHandler);
 }
