@@ -1,8 +1,7 @@
-
-
 export const popupImage = document.querySelector('.popup_show-image');
 export const popupImageSrc = popupImage.querySelector('.popup__image');
 export const popupImageText = popupImage.querySelector('.popup__image-title');
+
 
 //Массив карточек
 export const initialCards = [
