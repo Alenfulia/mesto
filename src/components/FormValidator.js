@@ -1,4 +1,4 @@
- export class FormValidator {
+export class FormValidator {
   constructor(validationConfig, formElement){
     this._formSelector = validationConfig.formSelector;
     this._inputSelector = validationConfig.inputSelector;
@@ -68,6 +68,16 @@
       evt.preventDefault();
     });
     this._setEventListeners();
+  }
+
+
+  // Сброс полей
+  resetValidation() {
+    this._toggleButtonState(false);
+
+    this._inputsList.forEach((inputElement) => {
+      this._hideInputError(this._formElement.querySelector(`.${inputElement.id}-error`), inputElement)
+    });
   }
 }
 

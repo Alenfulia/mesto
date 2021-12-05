@@ -19,8 +19,6 @@
   border-bottom: 1px solid red;
 }
 
-
-
 @media screen and (max-width: 768px) {
   .popup__input {
     width: 275px;
