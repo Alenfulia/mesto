@@ -1,22 +1,25 @@
-
 //Класс, который отвечает за управление отображением информации о пользователе на странице
 export default class UserInfo {
-  constructor({ userName, userInfo }) {
-    this._name = userName
-    this._info = userInfo
+  constructor({ username, userinform, avatar }) {
+    this._username = username;
+    this._userinform = userinform;
+    this._avatar = avatar
   }
 
   //Метод, который подставляет данные пользователя в форму при открытии
-  getUserInfo() {
-    return {
-      userNameValue: this._name.textContent,
-      userInfoValue: this._info.textContent
+  getUserInfo () {
+    const userInfo = {
+      username: this._username.textContent,
+      userinform: this._userinform.textContent,
+      avatar: this._avatar.src
     }
+    return userInfo;
   }
 
   //Метод, который принимает новые данные пользователя и добавляет их на страницу
-  setUserInfo( userNameValue, userInfoValue ) {
-    this._name.textContent = userNameValue,
-    this._info.textContent = userInfoValue
+  setUserInfo (data) {
+    this._username.textContent = data.name;
+    this._userinform.textContent = data.about;
+    this._avatar.src = data.avatar;
     }
   }
