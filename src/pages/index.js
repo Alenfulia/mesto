@@ -30,7 +30,6 @@ import { popupEditProfile,
          validationConfig
         } from "../utils/constants.js";
 
-let userId;
 
 // api
 const api = new Api({
@@ -45,7 +44,6 @@ const api = new Api({
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userInfo.setUserInfo(userData);
-    userId = userData._id;
     cardsList.renderItems(initialCards);
   })
   .catch((err) => {
@@ -116,7 +114,7 @@ const editAvatarPopup = new PopupWithForm({
     editAvatarPopup.loading(true);
     api.editAvatar(data)
       .then((data) => {
-        profileAvatar.src = data.avatar;
+        userInfo.setAvatar(data);
         editAvatarPopup.close();
       })
       .catch((err) => {
@@ -144,7 +142,7 @@ const createCard = (data) => {
   const card = new Card({
     data: data,
     templateSelector: '#card-template',
-    userId: userId,
+    userId: userInfo.getUserId(),
     handleCardClick: (name, link) => {
       openImage.open(name, link);
     },
