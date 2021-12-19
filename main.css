@@ -37,7 +37,7 @@
 .popup__image-title{color:#fff;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:400;line-height:15px;margin-bottom:0;margin-top:10px}
 .popup__show-container{background-color:transparent;border-radius:0;padding:0;width:auto}
 .form__input_type_error{border-bottom-color:red}
-.popup__input-error{color:red;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:400;line-height:15px}
+.popup__input-error{color:red;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:400;line-height:15px;max-width:358px}@media screen and (max-width:768px){.popup__input-error{width:275px}}@media screen and (max-width:450px){.popup__input-error{width:238px}}
 .popup__submit-save_inactive{background:#fff;border:1px solid rgba(0,0,0,.2);border-radius:2px;color:rgba(0,0,0,.2);cursor:not-allowed}
 .popup__del-container{max-height:181px}
 .popup__edit-avatar-container{max-height:272px}
