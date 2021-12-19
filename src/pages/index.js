@@ -116,7 +116,7 @@ const editAvatarPopup = new PopupWithForm({
     editAvatarPopup.loading(true);
     api.editAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
+        profileAvatar.src = data.avatar;
         editAvatarPopup.close();
       })
       .catch((err) => {
@@ -187,7 +187,7 @@ const createCard = (data) => {
 //Добавление массива карточек
 const cardsList = new Section({
   renderer: (card) => {
-    cardsList.addItem(createCard(card));
+    cardsList.appendItem(createCard(card));
   },
 }, cardListElement);
 
@@ -199,7 +199,7 @@ const popupNewCardForm = new PopupWithForm({
     popupNewCardForm.loading(true);
     api.addCard(formData)
     .then((formData) => {
-      cardsList.addItem(createCard(formData));
+      cardsList.prependItem(createCard(formData));
       popupNewCardForm.close();
     })
     .catch((err) => {
