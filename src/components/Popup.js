@@ -1,8 +1,7 @@
-
-//класс Popup, который отвечает за открытие и закрытие попапа
+//Класс, который отвечает за открытие и закрытие попапа
 export default class Popup {
   constructor(popup) {
-    this._popup = popup
+    this._popup = popup;
     this._handleEscClose = this._handleEscClose.bind(this)
   }
 
@@ -18,7 +17,7 @@ export default class Popup {
     document.removeEventListener('keydown', this._handleEscClose);
   }
 
-  //Приватный метод, который содержит логику закрытия попапа клавишей Esc
+  //Закрытие попапа клавишей Esc
   _handleEscClose (evt) {
     if (evt.key === "Escape") {
       this.close()
